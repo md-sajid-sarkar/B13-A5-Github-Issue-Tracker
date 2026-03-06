@@ -1,12 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Issues Tracker</title>
+
+    <!-- DaisyUI & Tailwind import related cdn  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+    <!-- ling for adding logo in tab  -->
     <link rel="shortcut icon" href="assets/github-logo.png" type="image/x-icon">
 </head>
-<body>
-    
+
+<body class="flex items-center justify-center min-h-screen bg-[#FFFFFF] ">
+    <div class="max-w-md w-full bg-white rounded-lg shadow-2xl overflow-hidden p-8">
+        <div class="logo flex justify-center mt-8 h-full w-full mb-6">
+            <img src="./assets/github-logo.png" alt="GitHub_Logo">
+        </div>
+        <div class="flex flex-col justify-center items-center gap-1">
+            <h2 class="text-[#1F2937] font-semibold text-2xl">GitHub Issues Tracker</h2>
+            <p class="text-[#64748B] text-[16px]">Sign in to manage your issues</p>
+        </div>
+
+        <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-sm">
+            <div class="card-body">
+                <fieldset class="fieldset text-[16px]">
+                    <label class="label text-[#1F2937]  font-semibold ">Username</label>
+                    <input type="text" class="input rounded-xl" placeholder="Enter Username" />
+                    <p class="text-[#4A00FF] text-[14px]">Default: admin</p>
+                    <label class="label text-[#1F2937] font-semibold mt-2">Password</label>
+                    <input type="password" class="input rounded-xl" placeholder="Enter Password" />
+                    <p class="text-[#4A00FF] text-[14px]">Default: admin123</p>
+                    <button id="signInBtn" class="btn btn-primary mt-4">Sign In</button>
+
+                    <div class="relative flex py-6  items-center">
+                        <div class="flex-grow border-t border-gray-300"></div>
+                        <span class="flex-shrink mx-4 text-gray-500 text-[16px]">OR</span>
+                        <div class="flex-grow border-t border-gray-300"></div>
+                    </div>
+
+                    <div class="text-center text-[#1F2937]">
+                        <p class="text-sm text-[#64748B] text-[14px]">Demo Credentials:</p>
+                        <div class="py-6">
+                            <h3><span class="font-semibold">Username:</span> admin</h3>
+                            <h3><span class="font-semibold">Password:</span> admin123</h3>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="./script/script.js"></script>
 </body>
+
 </html>

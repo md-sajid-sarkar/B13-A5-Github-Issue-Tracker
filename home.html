@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- DaisyUI & Tailwind import related cdn  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="">
+        <div class="navbar bg-base-100 shadow-sm  px-4 md:px-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                <div class="flex justify-center md:justify-start">
+                    <div class="flex items-center gap-1">
+                        <img class="w-8 md:w-9 h-auto" src="./assets/github-logo.png" alt="Github_Logo">
+                        <a class="text-xl md:text-2xl text-[#1F2937] font-semibold">GitHub Issues Tracker</a>
+                    </div>
+                </div>
+
+                <div class="flex justify-center md:justify-end gap-2 md:gap-3 ">
+                    <div class="flex items-center gap-2 input input-bordered text-[14px] md:text-[16px] md:w-auto p-0 ">
+                        <i class="fa-solid fa-magnifying-glass ml-3 text-gray-400"></i>
+                        <input type="text" placeholder="Search issues..."
+                            class="w-full outline-none border-none p-3 pl-0" />
+                    </div>
+                    <div class="">
+                        <div role="button" class="btn btn-primary text-[16px] text-[#FFFFFF]">
+                            <i class="fa-solid fa-plus"></i><span class="hidden sm:inline">New Issue</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-[#F8FAFC] ">
+        <div class="max-w-7xl mx-auto px-4 md:px-20 pt-15 space-y-3 ">
+            <div class="bg-white p-[24px] shadow-sm rounded-xl space-x-1">
+                <button id="allBtn" class="btn btn-outline">All</button>
+                <button id="openedBtn" class="btn btn-outline">Opened</button>
+                <button id="closedBtn" class="btn btn-outline">Closed</button>
+            </div>
+
+
+
+
+            <div class="bg-white  shadow-sm rounded-xl">
+                <div class="flex justify-between items-center px-4 py-5 border-b-2 border-gray-300">
+                    <div class="flex items-center gap-4">
+                        <div class="border-gray-200 border-10 rounded-full">
+                            <img class="w-7 h-7 object-contain" src="./assets/Aperture.png" alt="">
+                        </div>
+                        <div>
+                            <div class="text-[#1F2937] text-[20px] font-semibold flex items-center gap-2">
+                                <span id="issueCount">0</span> Issues
+                            </div>
+                            <p class="text-[16px] text-[#64748B]">
+                                Track and manage your project issues
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 text-sm text-[#64748B]">
+                        <span id="openCountMark" class="text-[#1F2937] text-[16px]"><i class="fa-solid fa-circle text-[#00A96E] text-[10px]"></i>
+                            Open</span>
+                        <span id="closedCountMark" class="text-[#1F2937] text-[16px]"><i class="fa-solid fa-circle text-[#8B5CF6] text-[10px]"></i>
+                            Closed</span>
+                    </div>
+                </div>
+                <div id="card" class=" grid grid-cols-1 md:grid-cols-4 gap-4 p-5">
+
+
+                    <!-- <div class="card bg-base-100 shadow-xl p-4 rounded-xl border-t-4 border-t-[#00A96E] ">
+                        <div class="flex justify-between mb-3">
+                            <img src="./assets/Open-Status.png" alt="">
+                            <div class="badge badge-soft badge-error font-semibold text-[12px]">HIGH</div>
+                        </div>
+
+                        <div class="space-y-3 mb-4">
+                            <h2 class="card-title font-semibold text-sm">Fix navigation menu on mobile devices</h2>
+                            <p class="line-clamp-2 text-[12px] text-[#64748B]">The navigation menu doesn't collapse
+                                properly on mobile devices The navigation menu doesn't collapse properly on mobile
+                                devices...</p>
+                            <div class="flex gap-2">
+                                <div
+                                    class="badge badge-soft font-semibold badge-error border-[#FECACA] rounded-xl text-[12px]">
+                                    BUG</div>
+                                <div
+                                    class="badge font-semibold bg-[#FFF8DB] border-[#FDE68A] rounded-xl text-[#D97706] text-[12px]">
+                                    <i class="fa-solid fa-bug"></i> HELP WANTED
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-[1px] border-gray-300">
+                        </div>
+                        <div class="mt-4 space-y-1">
+                            <p class="text-[12px] text-[#64748B]">#1 by john_doe</p>
+                            <p class="text-[12px] text-[#64748B]">1/15/2024</p>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./script/home.js"></script>
+</body>
+
+</html>

@@ -22,6 +22,12 @@ function display(allData) {
     allData.forEach(data => {
         // console.log(data);
 
+        let borderColorClass = "";
+        if (data.status.toLowerCase() === "open") {
+            borderColorClass = "border-t-[#00A96E]";
+        } else {
+            borderColorClass = "border-t-[#A855F7]";
+        }
 
         const card = document.createElement("div");
 
@@ -51,7 +57,7 @@ function display(allData) {
         }).join('');
 
         card.innerHTML = `<div >
-                    <div class="card bg-base-100 shadow-xl p-4 rounded-xl border-t-4 border-t-[#00A96E] ">
+                    <div class="card bg-base-100 shadow-xl p-4 rounded-xl border-t-4 ${borderColorClass} ">
                         <div class="flex justify-between mb-3">
                             <img src="./assets/Open-Status.png" alt="">
                             <div class="badge badge-soft badge-error font-semibold text-[12px] uppercase ">${data.priority}</div>
@@ -74,7 +80,7 @@ function display(allData) {
                     
                 </div>
         `;
-        cards.appendChild(card)
+        cards.appendChild(card);
     });
 }
 

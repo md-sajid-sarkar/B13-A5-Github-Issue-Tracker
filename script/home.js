@@ -3,12 +3,26 @@ const cards = document.getElementById("card");
 const openedBtn = document.getElementById("openedBtn");
 const closedBtn = document.getElementById("closedBtn");
 const issueCountElement = document.getElementById("issueCount");
+
+const loadingSpinner = document.getElementById("loadingSpinner");
+
+function showLoading() {
+    loadingSpinner.classList.remove("hidden");
+    cards.innerHTML = "";
+}
+
+function hideLoading() {
+    loadingSpinner.classList.add("hidden");
+}
+
 let allIssues = [];
 
 async function allIssuesLoad() {
+    showLoading();
     const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues`)
     const data = await res.json();
     allIssues = data.data;
+    hideLoading();
     display(allIssues);
 
 }
@@ -129,23 +143,66 @@ function setActiveButton(activeBtn) {
 }
 
 
-allBtn.addEventListener("click", () => {
+// allBtn.addEventListener("click", () => {
+//     setActiveButton(allBtn);
+//     showLoading();
+//     setTimeout(() => {
+//         hideLoading();
+//         display(allIssues);
+//     }, 100)
+// });
+
+// openedBtn.addEventListener("click", () => {
+//     setActiveButton(openedBtn);
+//     showLoading();
+//     hideLoading();
+//     const openData = allIssues.filter(issue => issue.status.toLowerCase() === "open");
+//     display(openData);
+// });
+
+// closedBtn.addEventListener("click", () => {
+//     setActiveButton(closedBtn);
+//     showLoading();
+//     hideLoading();
+//     const closedData = allIssues.filter(issue => issue.status.toLowerCase() === "closed");
+//     display(closedData);
+// });
+
+
+allBtn.addEventListener("click", async () => {
     setActiveButton(allBtn);
-    display(allIssues);
+    showLoading();
+    
+    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues`);
+    const data = await res.json();
+    
+    hideLoading(); 
+    display(data.data);
 });
 
-openedBtn.addEventListener("click", () => {
+openedBtn.addEventListener("click", async () => {
     setActiveButton(openedBtn);
-    const openData = allIssues.filter(issue => issue.status.toLowerCase() === "open");
+    showLoading();
+    
+    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues`);
+    const data = await res.json();
+    
+    hideLoading();
+    const openData = data.data.filter(issue => issue.status.toLowerCase() === "open");
     display(openData);
 });
 
-closedBtn.addEventListener("click", () => {
+closedBtn.addEventListener("click", async () => {
     setActiveButton(closedBtn);
-    const closedData = allIssues.filter(issue => issue.status.toLowerCase() === "closed");
+    showLoading();
+    
+    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues`);
+    const data = await res.json();
+    
+    hideLoading();
+    const closedData = data.data.filter(issue => issue.status.toLowerCase() === "closed");
     display(closedData);
 });
-
 
 document.getElementById("modal-title")
 document.getElementById("modal-desc")

@@ -20,7 +20,9 @@ function display(allData) {
     issueCountElement.innerText = allData.length;
 
     allData.forEach(data => {
-        // console.log(data);
+
+
+
 
         let borderColorClass = "";
         if (data.status.toLowerCase() === "open") {
@@ -29,7 +31,31 @@ function display(allData) {
             borderColorClass = "border-t-[#A855F7]";
         }
 
+
+
+
+        let priorityClass = "";
+        const priorityLevel = data.priority ? data.priority.toLowerCase() : "";
+        let leftSideImage = "./assets/Open-Status.png";
+
+        if (priorityLevel === "high") {
+            priorityClass = "badge-error bg-[#FEE2E2] text-[#EF4444] border-none";
+        } else if (priorityLevel === "medium") {
+            priorityClass = "badge-warning bg-[#FEF3C7] text-[#D97706] border-none";
+        } else if (priorityLevel === "low") {
+            priorityClass = "badge-success bg-[#DCFCE7] text-[#16A34A] border-none";
+            leftSideImage = "./assets/Closed- Status .png";
+        } else {
+            priorityClass = "badge-neutral";
+        }
+
+
+
         const card = document.createElement("div");
+
+        card.className = "cursor-pointer";
+
+
 
         let labelsHTML = data.labels.map(label => {
 
@@ -59,8 +85,8 @@ function display(allData) {
         card.innerHTML = `<div >
                     <div class="card bg-base-100 shadow-xl p-4 rounded-xl border-t-4 ${borderColorClass} ">
                         <div class="flex justify-between mb-3">
-                            <img src="./assets/Open-Status.png" alt="">
-                            <div class="badge badge-soft badge-error font-semibold text-[12px] uppercase ">${data.priority}</div>
+                            <img src="${leftSideImage}" alt="">
+                            <div class="badge badge-soft badge-error font-semibold text-[12px] uppercase ${priorityClass}">${data.priority}</div>
                         </div>
                         
                         <div class="space-y-3 mb-4">
@@ -80,9 +106,16 @@ function display(allData) {
                     
                 </div>
         `;
+
+        card.addEventListener("click", () => {
+            const issueId = data.id || data._id;
+            openIssueModal(issueId);
+        });
+
         cards.appendChild(card);
     });
 }
+
 
 function setActiveButton(activeBtn) {
     const allButtons = [allBtn, openedBtn, closedBtn];
@@ -113,6 +146,65 @@ closedBtn.addEventListener("click", () => {
     display(closedData);
 });
 
+
+document.getElementById("modal-title")
+document.getElementById("modal-desc")
+document.getElementById("modal-labels")
+document.getElementById("modal-author")
+document.getElementById("modal-priority")
+document.getElementById("modal-date")
+document.getElementById("modal-status-badge")
+
+async function openIssueModal(id) {
+    const modal = document.getElementById("issue_modal");
+    modal.showModal();
+
+    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
+    const responseData = await res.json();
+
+    const issue = responseData.data;
+
+    document.getElementById("modal-title").innerText = issue.title;
+    document.getElementById("modal-desc").innerText = issue.description;
+    document.getElementById("modal-author").innerText = issue.author;
+    document.getElementById("modal-priority").innerText = issue.priority;
+    document.getElementById("modal-date").innerText = new Date(issue.createdAt).toLocaleDateString();
+    
+
+    document.getElementById("modal-assignee").innerText = issue.author;
+
+
+    let statusColor = issue.status.toLowerCase() === "open" ? "text-[#00A96E] bg-[#DCFCE7]" : "text-[#8B5CF6] bg-[#EDE9FE]";
+    document.getElementById("modal-status-badge").innerHTML = `<div class="badge ${statusColor} border-none font-bold uppercase p-3">${issue.status}</div>`;
+    
+    if (issue.labels) {
+        document.getElementById("modal-labels").innerHTML = issue.labels.map(label => {
+            let icon = "";
+            let styleClasses = "";
+            
+            if (label.toLowerCase() === "bug") {
+                icon = `<i class="fa-solid fa-bug"></i>`;
+                styleClasses = "bg-[#FEE2E2] text-[#EF4444] border-[#FECACA]";
+            }
+            else if (label.toLowerCase() === "enhancement") {
+                icon = `<i class="fa-solid fa-wand-magic-sparkles"></i>`;
+                styleClasses = "bg-[#E0F2FE] text-[#0284C7] border-[#BAE6FD]";
+            }
+            else if (label.toLowerCase() === "help wanted") {
+                icon = `<i class="fa-solid fa-life-ring"></i>`;
+                styleClasses = "bg-[#FFF8DB] text-[#D97706] border-[#FDE68A]";
+            }
+            else {
+                icon = `<i class="fa-solid fa-tag"></i>`;
+                styleClasses = "bg-[#F3F4F6] text-[#4B5563] border-[#E5E7EB]";
+            }
+
+            return `<div class="badge font-semibold border-[1px] rounded-xl text-[12px] uppercase gap-1 py-3 px-2 ${styleClasses}">
+                ${icon} ${label}
+            </div>`;
+        }).join('');
+    }
+}
 
 setActiveButton(allBtn);
 allIssuesLoad();

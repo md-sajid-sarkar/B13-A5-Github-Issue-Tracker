@@ -61,7 +61,7 @@
             </div>
 
 
-
+            <!-- <img src="./assets/Closed- Status .png" alt=""> -->
 
             <div class="bg-white  shadow-sm rounded-xl">
                 <div class="flex justify-between items-center px-4 py-5 border-b-2 border-gray-300">
@@ -79,9 +79,11 @@
                         </div>
                     </div>
                     <div class="flex gap-4 text-sm text-[#64748B]">
-                        <span id="openCountMark" class="text-[#1F2937] text-[16px]"><i class="fa-solid fa-circle text-[#00A96E] text-[10px]"></i>
+                        <span id="openCountMark" class="text-[#1F2937] text-[16px]"><i
+                                class="fa-solid fa-circle text-[#00A96E] text-[10px]"></i>
                             Open</span>
-                        <span id="closedCountMark" class="text-[#1F2937] text-[16px]"><i class="fa-solid fa-circle text-[#8B5CF6] text-[10px]"></i>
+                        <span id="closedCountMark" class="text-[#1F2937] text-[16px]"><i
+                                class="fa-solid fa-circle text-[#8B5CF6] text-[10px]"></i>
                             Closed</span>
                     </div>
                 </div>
@@ -122,6 +124,132 @@
         </div>
     </section>
 
+    <!-- <dialog id="issue_modal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box w-11/12 max-w-2xl bg-white rounded-2xl">
+
+            <div class=" mb-4">
+                <h3 id="modal-title" class="text-2xl font-bold text-[#1F2937]"></h3>
+                <div id="modal-status-badge"></div>
+            </div>
+
+            <div id="modal-labels" class="flex gap-2 mb-4 flex-wrap">
+            </div>
+
+            <div class="border-b-[1px] border-gray-200 mb-4"></div>
+
+            <p id="modal-desc" class="py-2 text-sm text-[#64748B] leading-relaxed">
+            </p>
+
+            <div class="bg-[#F8FAFC] p-4 rounded-xl mt-6 border border-gray-100 space-y-2">
+                <p class="text-sm"><span class="font-semibold text-gray-700"><i class="fa-regular fa-user mr-1"></i>
+                        Author:</span> <span id="modal-author" class="text-gray-600"></span></p>
+                <p class="text-sm"><span class="font-semibold text-gray-700"><i
+                            class="fa-solid fa-layer-group mr-1"></i> Priority:</span> <span id="modal-priority"
+                        class="text-gray-600 uppercase"></span></p>
+                <p class="text-sm"><span class="font-semibold text-gray-700"><i class="fa-regular fa-calendar mr-1"></i>
+                        Date:</span> <span id="modal-date" class="text-gray-600"></span></p>
+            </div>
+
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn bg-gray-900 text-white hover:bg-gray-800 rounded-lg px-6">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog> -->
+
+    <!-- <dialog id="issue_modal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box w-11/12 max-w-2xl bg-white rounded-2xl p-0 overflow-hidden relative">
+
+
+            <div class="bg-gray-50 px-6 py-5 border-b border-gray-200">
+                <h3 id="modal-title" class="text-2xl font-bold text-[#1F2937] leading-snug pr-8"></h3>
+                <div class="flex items-center gap-2 mb-3">
+                    <div id="modal-status-badge"></div>
+                    <i class="fa-solid fa-circle text-[#64748B] text-[5px] "></i>
+                    <p class="text-[12px] text-[#64748B] font-medium">
+                         Opened by</p>
+                    <p id="modal-author" class="text-[13px] text-[#64748B] font-medium"></p>
+                    <p class="text-[13px] text-[#64748B] font-medium"><i class="fa-regular fa-calendar mr-1"></i> <span
+                            id="modal-date"></span></p>
+                </div>
+            </div>
+
+            <div class="p-6">
+                <div id="modal-labels" class="flex gap-2 mb-6 flex-wrap">
+                </div>
+
+                <div class="mb-8">
+                    <p id="modal-desc" class="text-[15px] text-[#475569] leading-relaxed"></p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-[#F8FAFC]">
+                        
+                        <div>
+                            <p class="text-[12px] text-[#64748B] font-medium uppercase">Assignee:</p>
+                            <p id="modal-author" class="text-[15px] font-bold text-[#1F2937]"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-[#F8FAFC]">
+                        
+                        <div>
+                            <p class="text-[12px] text-[#64748B] font-medium uppercase">Priority</p>
+                            <p id="modal-priority" class="text-[15px] font-bold text-[#1F2937] uppercase"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </dialog> -->
+    
+    <dialog id="issue_modal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box w-11/12 max-w-2xl bg-white rounded-2xl p-0 overflow-hidden relative">
+
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 text-gray-500 hover:text-gray-900 bg-gray-100">✕</button>
+            </form>
+
+            <div class="bg-gray-50 px-6 py-5 border-b border-gray-200 mt-6 md:mt-0">
+                <h3 id="modal-title" class="text-2xl font-bold text-[#1F2937] leading-snug pr-8 mb-3"></h3>
+                <div class="flex items-center gap-2 flex-wrap">
+                    <div id="modal-status-badge"></div>
+                    <i class="fa-solid fa-circle text-[#64748B] text-[5px]"></i>
+                    <p class="text-[12px] text-[#64748B] font-medium">Opened by</p>
+                    <p id="modal-author" class="text-[13px] text-[#64748B] font-semibold"></p>
+                    <i class="fa-solid fa-circle text-[#64748B] text-[5px]"></i>
+                    <p class="text-[13px] text-[#64748B] font-medium"> <span id="modal-date"></span></p>
+                </div>
+            </div>
+
+            <div class="p-6">
+                <div id="modal-labels" class="flex gap-2 mb-6 flex-wrap"></div>
+
+                <div class="mb-8">
+                    <p id="modal-desc" class="text-[15px] text-[#475569] leading-relaxed"></p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-[#F8FAFC]">
+                        <div>
+                            <p class="text-[12px] text-[#64748B] font-medium uppercase mb-1">Assignee</p>
+                            <p id="modal-assignee" class="text-[15px] font-bold text-[#1F2937]"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-[#F8FAFC]">
+                        <div>
+                            <p class="text-[12px] text-[#64748B] font-medium uppercase mb-1">Priority</p>
+                            <p id="modal-priority" class="text-[15px] font-bold text-[#1F2937] uppercase"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </dialog>
     <script src="./script/home.js"></script>
 </body>
 

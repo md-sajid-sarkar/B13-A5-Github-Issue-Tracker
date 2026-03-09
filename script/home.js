@@ -263,5 +263,23 @@ async function openIssueModal(id) {
     }
 }
 
+const searchInput = document.getElementById("searchInput");
+searchInput.addEventListener("input", async (event) => {
+    const searchText = event.target.value.trim(); 
+    setActiveButton(allBtn);
+    showLoading(); 
+
+    if (searchText) {
+        const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`);
+        const data = await res.json();
+        
+        hideLoading();
+        display(data.data); 
+    } else {
+        hideLoading();
+        display(allIssues);
+    }
+});
+
 setActiveButton(allBtn);
 allIssuesLoad();

@@ -96,29 +96,30 @@ function display(allData) {
             </div>`;
         }).join('');
 
-        card.innerHTML = `<div >
-                    <div class="card bg-base-100 shadow-xl p-4 rounded-xl border-t-4 h-full flex flex-col ${borderColorClass} ">
-                        <div class="flex justify-between mb-3">
-                            <img src="${leftSideImage}" alt="">
-                            <div class="badge badge-soft badge-error font-semibold text-[12px] uppercase ${priorityClass}">${data.priority}</div>
-                        </div>
-                        
-                        <div class="space-y-3 mb-4">
-                            <h2 class="card-title font-semibold text-sm">${data.title}</h2>
-                            <p class="line-clamp-2 text-[12px] text-[#64748B]">${data.description}</p>
-                            <div class="flex gap-2 flex-wrap">
-                                    ${labelsHTML}
-                            </div>
-                        </div>
-                        <div class="border-[1px] border-gray-300">
-                        </div>
-                        <div class="mt-4 space-y-1">
-                            <p class="text-[12px] text-[#64748B]">#${data.id || '1'} by ${data.author}</p>
-                            <p class="text-[12px] text-[#64748B]">${new Date(data.createdAt).toLocaleDateString()}</p>
-                        </div>
-                    </div>
-                    
+        card.innerHTML = `
+            <div class="card bg-base-100 shadow-xl p-4 rounded-xl border-t-4 h-full flex flex-col ${borderColorClass}">
+                
+                <div class="flex justify-between mb-3">
+                    <img src="${leftSideImage}" alt="">
+                    <div class="badge badge-soft badge-error font-semibold text-[12px] uppercase ${priorityClass}">${data.priority}</div>
                 </div>
+                
+                <div class="space-y-3 mb-4 flex-grow">
+                    <h2 class="card-title font-semibold text-sm">${data.title}</h2>
+                    <p class="line-clamp-2 text-[12px] text-[#64748B]">${data.description}</p>
+                    <div class="flex gap-2 flex-wrap">
+                            ${labelsHTML}
+                    </div>
+                </div>
+
+                <div class="border-[1px] border-gray-300 mt-auto"></div>
+                
+                <div class="mt-4 space-y-1">
+                    <p class="text-[12px] text-[#64748B]">#${data.id || '1'} by ${data.author}</p>
+                    <p class="text-[12px] text-[#64748B]">${new Date(data.createdAt).toLocaleDateString()}</p>
+                </div>
+                
+            </div>
         `;
 
         card.addEventListener("click", () => {
@@ -142,31 +143,6 @@ function setActiveButton(activeBtn) {
     activeBtn.classList.add("btn-primary");
 }
 
-
-// allBtn.addEventListener("click", () => {
-//     setActiveButton(allBtn);
-//     showLoading();
-//     setTimeout(() => {
-//         hideLoading();
-//         display(allIssues);
-//     }, 100)
-// });
-
-// openedBtn.addEventListener("click", () => {
-//     setActiveButton(openedBtn);
-//     showLoading();
-//     hideLoading();
-//     const openData = allIssues.filter(issue => issue.status.toLowerCase() === "open");
-//     display(openData);
-// });
-
-// closedBtn.addEventListener("click", () => {
-//     setActiveButton(closedBtn);
-//     showLoading();
-//     hideLoading();
-//     const closedData = allIssues.filter(issue => issue.status.toLowerCase() === "closed");
-//     display(closedData);
-// });
 
 
 allBtn.addEventListener("click", async () => {

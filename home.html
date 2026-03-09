@@ -99,33 +99,6 @@
                 <div id="card" class=" grid grid-cols-1 md:grid-cols-4 gap-4 p-5">
 
 
-
-                    <!-- <div class="flex justify-between mb-3">
-                        <img src="./assets/Open-Status.png" alt="">
-                        <div class="badge badge-soft badge-error font-semibold text-[12px]">HIGH</div>
-                    </div>
-
-                    <div class="space-y-3 mb-4">
-                        <h2 class="card-title font-semibold text-sm">Fix navigation menu on mobile devices</h2>
-                        <p class="line-clamp-2 text-[12px] text-[#64748B]">The navigation menu doesn't collapse
-                            properly on mobile devices The navigation menu doesn't collapse properly on mobile
-                            devices...</p>
-                        <div class="flex gap-2">
-                            <div
-                                class="badge badge-soft font-semibold badge-error border-[#FECACA] rounded-xl text-[12px]">
-                                BUG</div>
-                            <div
-                                class="badge font-semibold bg-[#FFF8DB] border-[#FDE68A] rounded-xl text-[#D97706] text-[12px]">
-                                <i class="fa-solid fa-bug"></i> HELP WANTED
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-[1px] border-gray-300">
-                    </div>
-                    <div class="mt-4 space-y-1">
-                        <p class="text-[12px] text-[#64748B]">#1 by john_doe</p>
-                        <p class="text-[12px] text-[#64748B]">1/15/2024</p>
-                    </div> -->
                 </div>
 
             </div>
@@ -134,32 +107,35 @@
     </section>
 
 
-   
-    
-    <dialog id="issue_modal" class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box w-11/12 max-w-2xl bg-white rounded-2xl p-0 overflow-y-auto relative max-h-[90vh]">
 
-            <form method="dialog">
-                <button
-                    class="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 text-gray-500 hover:text-gray-900 bg-gray-100 z-10">✕</button>
-            </form>
 
-            <div class="bg-gray-50 px-6 py-5 border-b border-gray-200 pt-14 sm:pt-6">
+    <dialog id="issue_modal" class="modal">
+        <div class="modal-box w-11/12 max-w-2xl bg-white rounded-2xl p-0 overflow-y-auto max-h-[85vh]">
+
+            <div class="bg-gray-50 p-5 sm:p-6 border-b border-gray-200 relative">
+
+                <form method="dialog">
+                    <button
+                        class="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 bg-gray-200 text-gray-600 hover:bg-gray-300 z-10">✕</button>
+                </form>
+
                 <h3 id="modal-title"
-                    class="text-xl sm:text-2xl font-bold text-[#1F2937] leading-snug pr-8 mb-3 break-words"></h3>
+                    class="text-[18px] sm:text-[22px] font-bold text-[#1F2937] leading-snug pr-12 mb-3 break-words">
+                </h3>
 
-                <div class="flex items-center gap-2 flex-wrap">
+                <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-[#64748B] text-[13px]">
                     <div id="modal-status-badge"></div>
-                    <i class="fa-solid fa-circle text-[#64748B] text-[5px] hidden sm:block"></i>
-                    <p class="text-[12px] text-[#64748B] font-medium">Opened by</p>
-                    <p id="modal-author" class="text-[13px] text-[#64748B] font-semibold break-all"></p>
-                    <i class="fa-solid fa-circle text-[#64748B] text-[5px] hidden sm:block"></i>
-                    <p class="text-[13px] text-[#64748B] font-medium"> <span id="modal-date"></span></p>
+
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span>Opened by <span id="modal-author" class="font-bold text-[#1F2937]"></span></span>
+                        <i class="fa-solid fa-circle text-[5px]"></i>
+                        <span id="modal-date" class="font-medium"></span>
+                    </div>
                 </div>
             </div>
 
-            <div class="p-6">
-                <div id="modal-labels" class="flex gap-2 mb-6 flex-wrap"></div>
+            <div class="p-5 sm:p-6">
+                <div id="modal-labels" class="flex gap-2 mb-5 flex-wrap"></div>
 
                 <div class="mb-8">
                     <p id="modal-desc" class="text-[14px] sm:text-[15px] text-[#475569] leading-relaxed break-words">
@@ -167,27 +143,22 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div
-                        class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-[#F8FAFC] overflow-hidden">
-                        <div class="w-full">
-                            <p class="text-[12px] text-[#64748B] font-medium uppercase mb-1">Assignee</p>
-                            <p id="modal-assignee" class="text-[14px] sm:text-[15px] font-bold text-[#1F2937] truncate">
-                            </p>
-                        </div>
+                    <div class="p-4 rounded-xl border border-gray-100 bg-[#F8FAFC] overflow-hidden">
+                        <p class="text-[12px] text-[#64748B] font-medium uppercase mb-1">Assignee</p>
+                        <p id="modal-assignee" class="text-[14px] sm:text-[15px] font-bold text-[#1F2937] truncate"></p>
                     </div>
 
-                    <div class="flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-[#F8FAFC]">
-                        <div>
-                            <p class="text-[12px] text-[#64748B] font-medium uppercase mb-1">Priority</p>
-                            <p id="modal-priority"
-                                class="text-[14px] sm:text-[15px] font-bold text-[#1F2937] uppercase"></p>
-                        </div>
+                    <div class="p-4 rounded-xl border border-gray-100 bg-[#F8FAFC]">
+                        <p class="text-[12px] text-[#64748B] font-medium uppercase mb-1">Priority</p>
+                        <div id="modal-priority" class="mt-1"></div>
                     </div>
                 </div>
             </div>
 
         </div>
     </dialog>
+
+
     <script src="./script/home.js"></script>
 </body>
 

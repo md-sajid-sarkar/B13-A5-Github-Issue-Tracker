@@ -170,6 +170,7 @@ function setActiveButton(activeBtn) {
 
 
 allBtn.addEventListener("click", async () => {
+    searchInput.value = "";
     setActiveButton(allBtn);
     showLoading();
     

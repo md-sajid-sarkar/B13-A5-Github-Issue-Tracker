@@ -1,0 +1,22 @@
+1️⃣ What is the difference between var, let, and const?
+In JavaScript, var, let, and const are used to declare variables, but they differ in scope, redeclaration, and reassignment behavior. The var keyword is function-scoped, meaning it is accessible throughout the entire function in which it is declared, even if it is defined inside a block like an if statement. Variables declared with var can be redeclared and reassigned, which may sometimes lead to unexpected behavior. In contrast, let is block-scoped, meaning it is only accessible within the block { } where it is defined. A variable declared with let cannot be redeclared in the same scope, but it can be reassigned with a new value. The const keyword is also block-scoped like let, but it is used for variables whose value should not change. Variables declared with const cannot be redeclared or reassigned, and they must be initialized at the time of declaration. However, if const is used with objects or arrays, their contents can still be modified even though the variable reference itself cannot be changed.
+
+
+
+2️⃣ What is the spread operator (...)?
+The spread operator (...) in JavaScript is used to expand or spread the elements of an array, object, or iterable into individual elements. It allows developers to copy, merge, or pass multiple values easily. When used with arrays, the spread operator can create a shallow copy of an array or combine multiple arrays into one. For example, let arr2 = [...arr1]; creates a copy of arr1, and let combined = [...arr1, ...arr2]; merges two arrays. It can also be used with objects to copy or merge object properties, such as let newObj = {...obj1, ...obj2};. Additionally, the spread operator is often used in function calls to pass array elements as individual arguments. Overall, the spread operator provides a short and convenient way to work with arrays, objects, and function parameters in JavaScript.
+
+
+
+3️⃣ What is the difference between map(), filter(), and forEach()?
+In JavaScript, map(), filter(), and forEach() are array methods used to iterate over elements, but they serve different purposes. The map() method is used to create a new array by transforming each element of the original array according to a given function. It returns a new array with the modified values. The filter() method is used to create a new array containing only the elements that satisfy a specified condition. It checks each element and includes it in the new array only if the condition returns true. On the other hand, forEach() is used to execute a function on each element of the array, but it does not return a new array; it simply performs an action such as printing values or updating variables. In summary, map() transforms elements and returns a new array, filter() selects elements based on a condition and returns a new array, while forEach() only iterates through the array without returning any new array.
+
+
+
+4️⃣ What is an arrow function?
+An arrow function in JavaScript is a shorter and cleaner way to write a function using the => syntax. It was introduced in ES6 to make code more simple and readable. Instead of using the traditional function keyword, an arrow function allows developers to define functions in a compact form, especially when writing small functions. For example, instead of writing function add(a, b) { return a + b; }, we can write it as const add = (a, b) => a + b;. Arrow functions are commonly used in array methods like map(), filter(), and forEach() because they make the code shorter and easier to understand. However, unlike regular functions, arrow functions do not have their own this value; they inherit this from the surrounding context. This makes them very useful in situations where we want to keep the same this reference inside callbacks.
+
+
+
+5️⃣ What are template literals?
+Template literals in JavaScript are a modern way to create strings using **backticks ( ) instead of single (' ') or double (" ") quotes. They make writing strings more flexible and readable. One of their main features is string interpolation, which allows variables or expressions to be inserted directly inside a string using ${ }. For example, instead of writing "Hello " + name, we can simply write `Hello ${name}`. Template literals also allow multi-line strings without using special characters like \n. Because of these advantages, they make code cleaner and easier to write, especially when working with dynamic text or combining variables with strings.

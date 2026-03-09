@@ -183,32 +183,49 @@ closedBtn.addEventListener("click", async () => {
     display(closedData);
 });
 
-document.getElementById("modal-title")
-document.getElementById("modal-desc")
-document.getElementById("modal-labels")
-document.getElementById("modal-author")
-document.getElementById("modal-priority")
-document.getElementById("modal-date")
-document.getElementById("modal-status-badge")
 
 async function openIssueModal(id) {
     const modal = document.getElementById("issue_modal");
     modal.showModal();
+    document.getElementById("modal-title").innerHTML = `
+        <div class="flex items-center gap-3 text-gray-500 text-lg">
+            <span class="loading loading-spinner loading-md"></span> 
+            Fetching details...
+        </div>
+    `;
+    
+    document.getElementById("modal-desc").innerText = "";
+    document.getElementById("modal-labels").innerHTML = "";
+    document.getElementById("modal-author").innerText = "";
+    document.getElementById("modal-priority").innerHTML = "";
+    document.getElementById("modal-date").innerText = "";
+    document.getElementById("modal-assignee").innerText = "";
+    document.getElementById("modal-status-badge").innerHTML = "";
 
     const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
     const responseData = await res.json();
-
     const issue = responseData.data;
 
     document.getElementById("modal-title").innerText = issue.title;
     document.getElementById("modal-desc").innerText = issue.description;
     document.getElementById("modal-author").innerText = issue.author;
-    document.getElementById("modal-priority").innerText = issue.priority;
     document.getElementById("modal-date").innerText = new Date(issue.createdAt).toLocaleDateString();
-    
-
     document.getElementById("modal-assignee").innerText = issue.author;
 
+    let priorityClass = "";
+    const priorityLevel = issue.priority ? issue.priority.toLowerCase() : "";
+
+    if (priorityLevel === "high") {
+        priorityClass = "bg-[#FEE2E2] text-[#EF4444]";
+    } else if (priorityLevel === "medium") {
+        priorityClass = "bg-[#FEF3C7] text-[#D97706]";
+    } else if (priorityLevel === "low") {
+        priorityClass = "bg-[#DCFCE7] text-[#16A34A]";
+    } else {
+        priorityClass = "badge-neutral";
+    }
+
+    document.getElementById("modal-priority").innerHTML = `<div class="badge font-bold border-none text-[12px] uppercase px-3 py-3 ${priorityClass}">${issue.priority}</div>`;
 
     let statusColor = issue.status.toLowerCase() === "open" ? "text-[#00A96E] bg-[#DCFCE7]" : "text-[#8B5CF6] bg-[#EDE9FE]";
     document.getElementById("modal-status-badge").innerHTML = `<div class="badge ${statusColor} border-none font-bold uppercase p-3">${issue.status}</div>`;

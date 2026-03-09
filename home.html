@@ -41,7 +41,8 @@
                         <i class="fa-solid fa-magnifying-glass ml-3 text-gray-400"></i>
                         <!-- <input type="text" placeholder="Search issues..."
                             class="w-full outline-none border-none p-3 pl-0" /> -->
-                            <input id="searchInput" type="text" placeholder="Search issues..." class="w-full outline-none border-none p-3 pl-0" />
+                        <input id="searchInput" type="text" placeholder="Search issues..."
+                            class="w-full outline-none border-none p-3 pl-0" />
                     </div>
                     <div class="">
                         <div role="button" class="btn btn-primary text-[16px] text-[#FFFFFF]">
@@ -63,10 +64,9 @@
             </div>
 
 
-            <!-- <img src="./assets/Closed- Status .png" alt=""> -->
 
             <div class="bg-white  shadow-sm rounded-xl">
-                <div class="flex justify-between items-center px-4 py-5 border-b-2 border-gray-300">
+                <!-- <div class="flex justify-between items-center px-4 py-5 border-b-2 border-gray-300">
                     <div class="flex items-center gap-4">
                         <div class="border-gray-200 border-10 rounded-full">
                             <img class="w-7 h-7 object-contain" src="./assets/Aperture.png" alt="">
@@ -88,8 +88,35 @@
                                 class="fa-solid fa-circle text-[#8B5CF6] text-[10px]"></i>
                             Closed</span>
                     </div>
-                </div>
+                </div> -->
 
+                <div
+                    class="flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 py-5 border-b-2 border-gray-300 gap-4 sm:gap-0">
+                    <div class="flex items-center gap-4">
+                        <div class="border-gray-200 border-10 rounded-full shrink-0">
+                            <img class="w-7 h-7 object-contain" src="./assets/Aperture.png" alt="">
+                        </div>
+                        <div>
+                            <div
+                                class="text-[#1F2937] text-[18px] sm:text-[20px] font-semibold flex items-center gap-2">
+                                <span id="issueCount">0</span> Issues
+                            </div>
+                            <p class="text-[14px] sm:text-[16px] text-[#64748B]">
+                                Track and manage your project issues
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 text-sm text-[#64748B]">
+                        <span id="openCountMark"
+                            class="text-[#1F2937] text-[14px] sm:text-[16px] flex items-center gap-1"><i
+                                class="fa-solid fa-circle text-[#00A96E] text-[10px]"></i>
+                            Open</span>
+                        <span id="closedCountMark"
+                            class="text-[#1F2937] text-[14px] sm:text-[16px] flex items-center gap-1"><i
+                                class="fa-solid fa-circle text-[#8B5CF6] text-[10px]"></i>
+                            Closed</span>
+                    </div>
+                </div>
                 <div class="hidden flex justify-center items-center py-10" id="loadingSpinner">
                     <span class="loading loading-dots loading-xl text-gray-800"></span>
                 </div>
@@ -97,37 +124,37 @@
                 <div id="card" class=" grid grid-cols-1 md:grid-cols-4 gap-4 p-5">
 
 
-                    
-                        <div class="flex justify-between mb-3">
-                            <img src="./assets/Open-Status.png" alt="">
-                            <div class="badge badge-soft badge-error font-semibold text-[12px]">HIGH</div>
-                        </div>
 
-                        <div class="space-y-3 mb-4">
-                            <h2 class="card-title font-semibold text-sm">Fix navigation menu on mobile devices</h2>
-                            <p class="line-clamp-2 text-[12px] text-[#64748B]">The navigation menu doesn't collapse
-                                properly on mobile devices The navigation menu doesn't collapse properly on mobile
-                                devices...</p>
-                            <div class="flex gap-2">
-                                <div
-                                    class="badge badge-soft font-semibold badge-error border-[#FECACA] rounded-xl text-[12px]">
-                                    BUG</div>
-                                <div
-                                    class="badge font-semibold bg-[#FFF8DB] border-[#FDE68A] rounded-xl text-[#D97706] text-[12px]">
-                                    <i class="fa-solid fa-bug"></i> HELP WANTED
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-[1px] border-gray-300">
-                        </div>
-                        <div class="mt-4 space-y-1">
-                            <p class="text-[12px] text-[#64748B]">#1 by john_doe</p>
-                            <p class="text-[12px] text-[#64748B]">1/15/2024</p>
-                        </div>
+                    <div class="flex justify-between mb-3">
+                        <img src="./assets/Open-Status.png" alt="">
+                        <div class="badge badge-soft badge-error font-semibold text-[12px]">HIGH</div>
                     </div>
 
+                    <div class="space-y-3 mb-4">
+                        <h2 class="card-title font-semibold text-sm">Fix navigation menu on mobile devices</h2>
+                        <p class="line-clamp-2 text-[12px] text-[#64748B]">The navigation menu doesn't collapse
+                            properly on mobile devices The navigation menu doesn't collapse properly on mobile
+                            devices...</p>
+                        <div class="flex gap-2">
+                            <div
+                                class="badge badge-soft font-semibold badge-error border-[#FECACA] rounded-xl text-[12px]">
+                                BUG</div>
+                            <div
+                                class="badge font-semibold bg-[#FFF8DB] border-[#FDE68A] rounded-xl text-[#D97706] text-[12px]">
+                                <i class="fa-solid fa-bug"></i> HELP WANTED
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-[1px] border-gray-300">
+                    </div>
+                    <div class="mt-4 space-y-1">
+                        <p class="text-[12px] text-[#64748B]">#1 by john_doe</p>
+                        <p class="text-[12px] text-[#64748B]">1/15/2024</p>
+                    </div>
                 </div>
+
             </div>
+        </div>
         </div>
     </section>
 

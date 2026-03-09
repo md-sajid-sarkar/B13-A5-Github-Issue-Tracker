@@ -67,7 +67,7 @@ function display(allData) {
 
         const card = document.createElement("div");
 
-        card.className = "cursor-pointer";
+        card.className = "cursor-pointer h-full";
 
 
 
@@ -97,7 +97,7 @@ function display(allData) {
         }).join('');
 
         card.innerHTML = `<div >
-                    <div class="card bg-base-100 shadow-xl p-4 rounded-xl border-t-4 ${borderColorClass} ">
+                    <div class="card bg-base-100 shadow-xl p-4 rounded-xl border-t-4 h-full flex flex-col ${borderColorClass} ">
                         <div class="flex justify-between mb-3">
                             <img src="${leftSideImage}" alt="">
                             <div class="badge badge-soft badge-error font-semibold text-[12px] uppercase ${priorityClass}">${data.priority}</div>
@@ -182,6 +182,7 @@ allBtn.addEventListener("click", async () => {
 });
 
 openedBtn.addEventListener("click", async () => {
+    searchInput.value = "";
     setActiveButton(openedBtn);
     showLoading();
     
@@ -194,6 +195,7 @@ openedBtn.addEventListener("click", async () => {
 });
 
 closedBtn.addEventListener("click", async () => {
+    searchInput.value = "";
     setActiveButton(closedBtn);
     showLoading();
     
